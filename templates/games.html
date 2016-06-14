@@ -1,0 +1,90 @@
+<html>
+<head>
+	<title>Games</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	
+	<link href='https://fonts.googleapis.com/css?family=Kanit:400,800italic,700,700italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+	<link href="{{url_for('static', filename='styles/main.css')}}" rel="stylesheet">
+
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+  		<div class="container-fluid">
+		    <div class="navbar-header">
+		     	<span class="navbar-brand">GeekayGames</span>
+		    </div>
+		    <ul class="nav navbar-nav navbar-right">
+		      <li>
+		      	<a href="{{url_for('Consoles')}}">
+		      	Consoles</a>
+		      </li>
+		      <li>
+		      	<a href="{{url_for('logout')}}">
+		      		<span class="glyphicon glyphicon-log-in"></span> 
+		      		Logout
+		      	</a>
+		      </li>
+		    </ul>
+ 		 </div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12" id="console-heading">
+				<h1>{{console.name}}</h1>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<hr>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-2">
+				<a href="{{url_for('newGame', console_id=console_id)}}">
+					<button class="btn btn-primary">Add New Game</button>
+				</a>
+			</div>
+		</div>
+
+		<br />
+		<table class="table">
+			<thead>
+				<tr class="info">
+						<th>Title</th>
+						<th>Released date</th>
+						<th>Developers</th>
+						<th>IGN_Rating</th>
+						<th>Delete</th>
+					</tr>
+			</thead>
+			<tbody>
+				{% for game in games %}
+					<tr>
+						<td>
+							<a href="{{url_for('editGame', console_id=console_id, game_id=game.id)}}">{{game.name}}
+							</a>
+						</td>
+						<td>
+							{{game.released_year}}
+						</td>
+						<td>
+							{{game.developed_by}}
+						</td>
+						<td class="glyphicon glyphicon-star">
+							{{game.ratings}}
+						</td>
+						<td>
+							<a href="{{url_for('deleteGame', console_id=console_id, game_id=game.id)}}">Delete
+							</a>
+								</td>
+					</tr>
+				{% endfor %}	
+			</tbody>			
+		</table>
+	</div>
+</body>
+</html>

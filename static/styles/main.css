@@ -1,0 +1,97 @@
+hr{
+	border-width: 3px;
+}
+
+.space{
+	padding-top: 30px;
+}
+
+.nav-align{
+	color: white;
+	font-size: 25px;
+	font-family: 'Lora', serif;
+	padding-top: 5px;
+}
+
+.align-left{
+	padding-right: 50px;
+}
+
+.logout {
+	color: white;
+	font-size: 25px;
+	padding-top: 9px;
+}
+
+.right-cornered{
+	padding-top: 100px;
+}
+
+.vertical-line {
+    border-right: thick solid #999;
+}
+
+.alert{
+	color: red;
+}
+
+.image {
+	width: 100%;
+	max-width: 80%;
+}
+
+.pad-up{
+	padding-top: 5px;
+}
+
+#user-heading {
+	font-family: 'Kanit', sans-serif;
+	font-size: 40px;
+	text-transform: uppercase;
+}
+
+#ign-rating{
+	font-family: 'Kanit', sans-serif;
+	background-color: #ff1a1a;
+	color: white;
+	padding-bottom: 20px;
+	padding-left: 65px;
+}
+
+.text-big{
+	font-size: 60px;
+}
+
+#game-title{
+	font-family: 'Kanit', sans-serif;
+	background-color: #262626;
+	font-size: 60px;
+	color: white;	
+	padding-bottom: 10px;
+	padding-top: 10px;
+	padding-left: 60px;
+}
+
+#story-text{
+	font-size: 20px;
+}
+
+#story-heading{
+	font-family: 'Kanit', sans-serif;
+}
+
+#console-heading{
+	font-family: 'Kanit', sans-serif;
+	background-color: #262626;
+	font-size: 60px;
+	color: white;
+}
+
+#pad-top{
+	padding-top: 70px;
+}
+
+#about-site{
+	font-size: 25px;
+	font-family: 'Kanit', sans-serif;
+}

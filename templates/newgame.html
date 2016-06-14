@@ -1,0 +1,91 @@
+<html>
+<head>
+	<title>New Game</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	
+	<link href='https://fonts.googleapis.com/css?family=Lora:400,700italic' rel='stylesheet' type='text/css'>
+
+	<link href="{{url_for("static", filename="styles/main.css")}}" rel="stylesheet">
+
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Add New Game:</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<hr>
+			</div>
+		</div>
+		<form class="form-horizontal" enctype="multipart/form-data" action="{{url_for('newGame', console_id=console_id)}}" method="post">
+
+			<div class="row">
+					<div class="col-md-offset-3 col-md-10">
+						{% with messages = get_flashed_messages() %}
+							{% if messages %}
+								{% for message in messages %}
+									<ul>
+										<strong><li>{{message}}</li></strong>
+									</ul>
+								{% endfor %}
+							{% endif %}
+						{% endwith %}
+					</div>
+				</div>
+
+			<div class="form-group space">
+					<label for="Name" class="col-md-offset-3 col-md-1 control-label">Name:</label>
+					<div class="col-md-3">
+						<input class="form-control"type="text" name="name" placeholder="Name of Game">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="description" class="col-md-offset-3 col-md-1 control-label">description:</label>
+					<div class="col-md-3">
+						<input class="form-control"type="text" name="description" placeholder="Enter description">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="ratings" class="col-md-offset-3 col-md-1 control-label">IGN_Ratings:</label>
+					<div class="col-md-3">
+						<input class="form-control"type="text" name="ratings" placeholder="Enter rating of the game">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="developers" class="col-md-offset-3 col-md-1 control-label">Developers:</label>
+					<div class="col-md-3">
+						<input class="form-control"type="text" name="developed_by" placeholder="Enter the creators name">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="developers" class="col-md-offset-3 col-md-1 control-label">Released date:</label>
+					<div class="col-md-3">
+						<input class="form-control"type="text" name="released_year" placeholder="Enter the release year">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-md-offset-4 col-md-3">
+						<button type="submit" class="btn btn-primary btn-block">Create</button>
+					</div>
+				</div>
+		</form>
+		<div class="form-group">
+			<div class="col-md-offset-4 col-md-3">
+				<a href="{{url_for('Games', console_id=console_id)}}">
+					<button type="submit" class="btn btn-default btn-block">Cancel</button>
+				</a>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

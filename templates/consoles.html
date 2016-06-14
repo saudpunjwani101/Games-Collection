@@ -1,0 +1,112 @@
+<html>
+<head>
+	<title>Home</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	
+	<link href='https://fonts.googleapis.com/css?family=Lora:400,700italic' rel='stylesheet' type='text/css'>
+
+	<link href='https://fonts.googleapis.com/css?family=Kanit:400,800italic,700,700italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+	<link href="{{url_for("static", filename="styles/main.css")}}" rel="stylesheet">
+
+</head>
+<body>
+	<nav class="navbar navbar-inverse">
+  		<div class="container-fluid">
+		    <div class="navbar-header">
+		     	<span class="navbar-brand">GeekayGames</span>
+		    </div>
+		    <ul class="nav navbar-nav navbar-right">
+		      <li>
+		      	<a href="#"><span class="glyphicon glyphicon-user"></span>
+		      	{{login['username']}}</a>
+		      </li>
+		      <li>
+		      	<a href="{{url_for('logout')}}">
+		      		<span class="glyphicon glyphicon-log-in"></span> 
+		      		Logout
+		      	</a>
+		      </li>
+		    </ul>
+ 		 </div>
+	</nav>
+	<div class="container">	
+		<div class="row">
+			<div class="col-md-offset-3 col-md-10">
+				{% with messages = get_flashed_messages() %}
+					{% if messages %}
+						{% for message in messages %}
+							<ul>
+								<strong><li>{{message}}</li></strong>
+							</ul>
+						{% endfor %}
+					{% endif %}
+				{% endwith %}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-3">
+				<img class="img-responsive" src="{{url}}" alt="User profile photo">
+			</div>
+			<div class="col-md-7">
+					<h1 id="user-heading">Welcome, {{login['username']}}</h1>
+			</div>
+			<div class="col-md-offset-8 col-md-2 right-cornered">
+				<a href="{{url_for('uploadUserImage')}}">
+					<button class="btn btn-default" type="submit">Upload User Image</button> 
+				</a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<hr>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<a href="{{url_for('newConsole')}}">
+					<button class="btn btn-primary">Add Console</button>
+				</a>
+			</div>
+		</div>
+		<br />
+		<div class="row">
+			<div class="col-md-12">
+				<table class=" table">
+					<thead>
+						<tr>
+							<th>Console Name</th>
+							<th>Company</th>
+							<th>Delete</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for console in consoles %}
+							<tr>
+								<td>
+									<a href="{{url_for('Games', console_id=console.id)}}">
+										{{console.name}}
+									</a>
+								</td>
+								<td>
+									{{console.company}}
+								</td>
+								<td>
+									<a href="{{url_for('deleteConsole', console_id=console.id)}}">
+										<button class=" btn btn-danger glyphicon glyphicon-remove">
+										</button>
+									</a>
+								</td>
+							</tr>
+						{% endfor %}	
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title>Delete</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	
+	<link href='https://fonts.googleapis.com/css?family=Lora:400,700italic' rel='stylesheet' type='text/css'>
+
+	<link href="{{url_for("static", filename="styles/main.css")}}" rel="stylesheet">
+
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Are you sure you want to delete '{{i.name}}'</h1>	
+			</div>
+		</div>
+		<form action="{{url_for('deleteGame', console_id=i.console_id, game_id=i.id)}}"
+		method="post">
+		<br>
+		<div class="row">
+			<div class="col-md-12">
+				<button type="submit" class="btn btn-danger btn-block" value="Delete">Delete</button>
+			</div>
+		</div>
+	</form>
+		<div class="row">
+			<div class="col-md-12">
+					<a href="{{url_for('Games', console_id=i.id)}}">
+						<button class="btn btn-default btn-block">
+							Cancel
+						</button>
+					</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
